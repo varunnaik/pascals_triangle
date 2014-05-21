@@ -10,13 +10,17 @@
 <header class="page-header">
     <h1>Pascal's Triangle Explorer <small>Generate and explore properties of Pascal's Triangle</small></h1>
 </header>
-<div class="jumbotron container row col-sm-6 col-sm-offset-3">
+<form class="jumbotron container row col-sm-6 col-sm-offset-3" id="homepagePascalForm">
     <h1>Generate a Pascal's Triangle</h1>
+    <div id="homepagePascalError" class="alert alert-danger" style="display: none">Please enter an integer between 1 and 2000.</div>
     <label>Enter the number of rows to generate:</label>
-    <input type="text" class="form-control" placeholder="eg., 20"/>
-    <p><a class="btn btn-primary btn-lg" role="button">Generate!</a></p>
-</div>
+    <input type="text" class="form-control" placeholder="eg., 20" id="homepagePascalRowInput" />
+    <p><button class="btn btn-primary btn-lg" role="button">Generate!</button></p>
+</form>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="script/pascal.js"></script>
+<script src="script/main.js"></script>
 </body>
 </html>
