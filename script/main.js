@@ -15,6 +15,7 @@ $('#homepagePascalForm').submit(function (event) {
     $('#homepagePascalForm').hide();
     $('#pascalExplorerSidebar').show();
     $('#triangleSidebar').show();
+    $('header').hide();
     return false;
 });
 
@@ -31,7 +32,7 @@ var Utils = {};
 Utils.showTriangle = function(numRows) {
     var triangle = PascalTriangle.generate(numRows);
     if (!triangle || triangle.length === 0) return false;
-    Utils.setUpDisplay();
+    Utils.setUpDisplay(numRows);
     Utils.drawTriangle(triangle);
     return true;
 };
@@ -43,20 +44,26 @@ Utils.drawTriangle = function(triangle) {
     for (var row = 0; row < triangle.length; row++) {
         var row_container = container.append('<div class="pascal-row" id="row-'+row+'"></div>');
         for (var col = 0; col < triangle[row].length; col++) {
-            row_container.append('<span class="C" id="col-'+col+'">'+triangle[row][col]+'</span>');
-            row_container.append('&nbsp;');
+            row_container.append('<span class="pascal-col" id="col-'+col+'">'+triangle[row][col]+'</span>');
         }
     }
     $('#triangleDisplay').empty().append(container);
 };
 
-Utils.setUpDisplay = function() {
+Utils.setUpDisplay = function(numRows) {
     // Set up the display for optimum usage
     // If num rows < available space
     // If num rows > available space
-    var minFontSize = 9;
-    var maxFontSize = 22;
-    //alert($('#triangleDisplay').width())
+    var minFontSize = 13;
+    var maxFontSize = 26;
+    var availableWidth = $('#triangleDisplay').width();
+    var availableHeight = $(window).height();
+
+    var bestFontSize = availableWidth / (numRows*minFontSize);
+    bestFontSize = Math.min(bestFontSize, maxFontSize);
+    bestFontSize = Math.max(minFontSize, bestFontSize);
+    $("<style type='text/css'>.pascal-col { font-size: "+ bestFontSize+"px; padding: "+(bestFontSize/2)+"px;}</style>").appendTo("head");
+
 };
 
 /*

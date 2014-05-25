@@ -32,6 +32,7 @@ header.page-header {
     text-align: center;
     font-family: "Inconsolata", monospace;
     font-size: 10px;
+    max-height: 100vh;
     overflow: auto;
 }
 .pascal-col {
@@ -46,6 +47,6 @@ header.page-header {
 }
 @media screen and (min-width: 900px) {
     #triangleSidebar {
-        min-height: 91vh;
+        min-height: 100vh;
     }
 }
