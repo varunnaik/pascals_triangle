@@ -37,3 +37,11 @@ header.page-header {
     border-right: 1px solid #dddddd;
     background: #fdfdfd;
 }
+#triangleSidebar button {
+    margin-top: 7px;
+}
+@media screen and (min-width: 900px) {
+    #triangleSidebar {
+        min-height: 91vh;
+    }
+}

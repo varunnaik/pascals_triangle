@@ -10,15 +10,26 @@ $('#homepagePascalForm').submit(function (event) {
         return false;
     }
     Utils.showTriangle(PascalTriangle.generate(numRows));
+    $('#numberOfRows').val(numRows);
     $('#homepagePascalForm').hide();
     $('#pascalExplorerSidebar').show();
     $('#triangleSidebar').show();
     return false;
 });
 
+$('#pascalRowsForm').submit(function(event) {
+    var numRows = parseInt($('#numberOfRows').val());
+    if (!numRows || numRows > 2000) {
+        return false;
+    }
+    Utils.showTriangle(PascalTriangle.generate(numRows));
+    return false;
+});
+
 var Utils = {};
 Utils.showTriangle = function(triangle) {
     // Given a Pascal's triangle, add it to the display
+    $('#triangleDisplay').empty();
     var container = $('#triangleDisplay');
     for (var row = 0; row < triangle.length; row++) {
         var row_container = container.append('<div class="pascal-row" id="row-'+row+'"></div>');
