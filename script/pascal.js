@@ -14,7 +14,7 @@ PascalTriangle.generate = function(rows) {
 
 PascalTriangle.generateRow = function(n) {
     // Generate the nth row of Pascal's triangle and return it
-    var row = [1]
+    var row = [1];
     for (var i = 0; i < n; i++) {
         row.push(parseInt(row[i] * ((n - i) / (i + 1))));
     }

@@ -32,6 +32,10 @@ header.page-header {
     text-align: center;
     font-family: "Inconsolata", monospace;
     font-size: 10px;
+    overflow: auto;
+}
+.pascal-col {
+    display: inline-block;
 }
 #triangleSidebar {
     border-right: 1px solid #dddddd;

@@ -9,7 +9,8 @@ $('#homepagePascalForm').submit(function (event) {
         $('#homepagePascalError').show();
         return false;
     }
-    Utils.showTriangle(PascalTriangle.generate(numRows));
+
+    Utils.showTriangle(numRows);
     $('#numberOfRows').val(numRows);
     $('#homepagePascalForm').hide();
     $('#pascalExplorerSidebar').show();
@@ -22,22 +23,40 @@ $('#pascalRowsForm').submit(function(event) {
     if (!numRows || numRows > 2000) {
         return false;
     }
-    Utils.showTriangle(PascalTriangle.generate(numRows));
+    Utils.showTriangle(numRows);
     return false;
 });
 
 var Utils = {};
-Utils.showTriangle = function(triangle) {
+Utils.showTriangle = function(numRows) {
+    var triangle = PascalTriangle.generate(numRows);
+    if (!triangle || triangle.length === 0) return false;
+    Utils.setUpDisplay();
+    Utils.drawTriangle(triangle);
+    return true;
+};
+
+Utils.drawTriangle = function(triangle) {
     // Given a Pascal's triangle, add it to the display
-    $('#triangleDisplay').empty();
-    var container = $('#triangleDisplay');
+
+    var container = $('<div></div>');
     for (var row = 0; row < triangle.length; row++) {
         var row_container = container.append('<div class="pascal-row" id="row-'+row+'"></div>');
         for (var col = 0; col < triangle[row].length; col++) {
-            row_container.append('<span class="pascal-col" id="col-'+col+'">'+triangle[row][col]+'</span>');
+            row_container.append('<span class="C" id="col-'+col+'">'+triangle[row][col]+'</span>');
             row_container.append('&nbsp;');
         }
     }
+    $('#triangleDisplay').empty().append(container);
+};
+
+Utils.setUpDisplay = function() {
+    // Set up the display for optimum usage
+    // If num rows < available space
+    // If num rows > available space
+    var minFontSize = 9;
+    var maxFontSize = 22;
+    //alert($('#triangleDisplay').width())
 };
 
 /*
