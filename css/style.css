@@ -28,3 +28,12 @@ header.page-header {
     margin-top: 20px;
     text-align: center;
 }
+#triangleDisplay {
+    text-align: center;
+    font-family: "Inconsolata", monospace;
+    font-size: 10px;
+}
+#triangleSidebar {
+    border-right: 1px solid #dddddd;
+    background: #fdfdfd;
+}
